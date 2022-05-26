@@ -148,7 +148,7 @@ class InitialPowerLaw(InitialPower):
             raise CAMBError('Initial power parameterization not supported here')
         self.tensor_parameterization = parameterization
         self.As = As
-        self.TNP = TMP
+        self.TNP = TNP
         self.ns = ns
         self.nrun = nrun
         self.nrunrun = nrunrun
