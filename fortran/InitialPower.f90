@@ -53,7 +53,7 @@
         real(dl) :: pivot_tensor = 0.05_dl
         real(dl) :: As = 1._dl
         real(dl) :: At = 1._dl !A_T at k_0_tensor if tensor_parameterization==tensor_param_AT
-        real(dl) :: TNP = 0._dl
+        real(dl) :: TNP = 1._dl
         real(dl), private :: curv = 0._dl !curvature parameter
     contains
     procedure :: Init => TInitialPowerLaw_Init
@@ -139,8 +139,8 @@
 
 
     lnrat = log(k/this%pivot_scalar)
-    TInitialPowerLaw_ScalarPower = lnrat !this%As * exp(lnrat * (this%ns - 1 + &
-        !&             lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat))) +cos(this%TNP*k)
+    TInitialPowerLaw_ScalarPower =this%As * exp(lnrat * (this%ns - 1 + &
+        &             lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat)))
 
     end function TInitialPowerLaw_ScalarPower
 
