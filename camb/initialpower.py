@@ -167,7 +167,7 @@ class InitialPowerLaw(InitialPower):
         self.r = r
         self.pivot_scalar = pivot_scalar
         self.pivot_tensor = pivot_tensor
-        self.TNP = Tr
+        self.Tr = Tr
         return self
 
     def has_tensors(self):
