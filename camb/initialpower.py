@@ -150,7 +150,7 @@ class InitialPowerLaw(InitialPower):
         self.ns = ns
         self.nrun = nrun
         self.nrunrun = nrunrun
-        self.TNP = TNP
+        
         if nt is None:
             # set from inflationary consistency
             if ntrun:
