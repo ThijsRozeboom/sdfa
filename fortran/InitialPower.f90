@@ -139,8 +139,8 @@
 
 
     lnrat = log(k/this%pivot_scalar)
-    TInitialPowerLaw_ScalarPower = this%As * exp(lnrat * (this%ns - 1 + &
-        &             lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat))) +cos(this%TNP*k)
+    TInitialPowerLaw_ScalarPower = lnrat !this%As * exp(lnrat * (this%ns - 1 + &
+        !&             lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat))) +cos(this%TNP*k)
 
     end function TInitialPowerLaw_ScalarPower
 
