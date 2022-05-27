@@ -52,7 +52,7 @@
         real(dl) :: pivot_scalar = 0.05_dl !pivot scales in Mpc^{-1}
         real(dl) :: pivot_tensor = 0.05_dl
         real(dl) :: As = 1._dl
-        real(dl) :: new_par = 1._dl
+        real(dl) :: new_par = 0.1_dl
         real(dl) :: At = 1._dl !A_T at k_0_tensor if tensor_parameterization==tensor_param_AT
         
         real(dl), private :: curv = 0._dl !curvature parameter
@@ -141,7 +141,7 @@
 
     lnrat = log(k/this%pivot_scalar)
     TInitialPowerLaw_ScalarPower =(this%As * exp(lnrat * (this%ns - 1 + &
-        &             lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat)))) +1000!* (1+ 0.1* Cos(lnrat*30))
+        &             lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat)))) * (1+ this%new_par* Cos(k/this%pivot_scalar))
 
     end function TInitialPowerLaw_ScalarPower
 
@@ -200,6 +200,7 @@
     
     call Ini%Read('pivot_scalar', this%pivot_scalar)
     call Ini%Read('pivot_tensor', this%pivot_tensor)
+    call Ini%Read('new_par', this%new_par)
     if (Ini%Read_Int('initial_power_num', 1) /= 1) call MpiStop('initial_power_num>1 no longer supported')
     if (WantTensors) then
         this%tensor_parameterization =  Ini%Read_Int('tensor_parameterization', tensor_param_indeptilt)
@@ -209,7 +210,7 @@
     end if
     this%r = 1
     this%ns = Ini%Read_Double(CompatKey(Ini,'scalar_spectral_index'))
-    !this%new_par =Ini%Read_Double(CompatKey(Ini,'new_par'))
+    
     call Ini%Read(CompatKey(Ini,'scalar_nrun'), this%nrun)
     call Ini%Read(CompatKey(Ini,'scalar_nrunrun'), this%nrunrun)
 
