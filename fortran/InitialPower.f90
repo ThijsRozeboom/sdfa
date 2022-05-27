@@ -54,7 +54,7 @@
         real(dl) :: As = 1._dl
         real(dl) :: ampt = 0._dl
         real(dl) :: phaset = 0._dl
-        real(dl) :: freq = 0._dl
+        real(dl) :: freqt = 0._dl
         real(dl) :: At = 1._dl !A_T at k_0_tensor if tensor_parameterization==tensor_param_AT
         
         real(dl), private :: curv = 0._dl !curvature parameter
