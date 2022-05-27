@@ -213,9 +213,9 @@
     this%ns = Ini%Read_Double(CompatKey(Ini,'scalar_spectral_index'))
     
     call Ini%Read(CompatKey(Ini,'scalar_nrun'), this%nrun)
-    call Ini%Read(CompatKey(Ini,'ampt'))
-    call Ini%Read(CompatKey(Ini,'freqt'))
-    call Ini%Read(CompatKey(Ini,'phaset'))
+    call Ini%Read(CompatKey(Ini,'ampt'), this%ampt)
+    call Ini%Read(CompatKey(Ini,'freqt'), this%freqt)
+    call Ini%Read(CompatKey(Ini,'phaset'), this%phaset)
     call Ini%Read(CompatKey(Ini,'scalar_nrunrun'), this%nrunrun)
 
     if (WantTensors) then
