@@ -209,7 +209,7 @@
     end if
     this%r = 1
     this%ns = Ini%Read_Double(CompatKey(Ini,'scalar_spectral_index'))
-    this%new_par =Ini%Read_Double(CompatKey(Ini,'scalar_new_par'))
+    this%new_par =Ini%Read_Double(CompatKey(Ini,'new_par'))
     call Ini%Read(CompatKey(Ini,'scalar_nrun'), this%nrun)
     call Ini%Read(CompatKey(Ini,'scalar_nrunrun'), this%nrunrun)
 
