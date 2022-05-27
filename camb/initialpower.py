@@ -124,7 +124,7 @@ class InitialPowerLaw(InitialPower):
     def __init__(self, **kwargs):
         self.set_params(**kwargs)
 
-    def set_params(self, As=2e-9, ns=0.96, nrun=0, nrunrun=0.0, r=0.0, nt=None, ntrun=0.0, new_par=0.1, amp_t = 0,freq_t =0, phase_t=0,
+    def set_params(self, As=2e-9, ns=0.96, nrun=0, nrunrun=0.0, r=0.0, nt=None, ntrun=0.0, amp_t = 0,freq_t =0, phase_t=0,
                    pivot_scalar=0.05, pivot_tensor=0.05, parameterization="tensor_param_rpivot"):
         r"""
         Set parameters using standard power law parameterization. If nt=None, uses inflation consistency relation.
