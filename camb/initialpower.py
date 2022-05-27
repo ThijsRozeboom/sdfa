@@ -113,7 +113,7 @@ class InitialPowerLaw(InitialPower):
         ("pivot_scalar", c_double),
         ("pivot_tensor", c_double),
         ("As", c_double),
-        ("At", c_double)
+        ("At", c_double),
         ("new_par", c_double)
     ]
 
