@@ -52,7 +52,9 @@
         real(dl) :: pivot_scalar = 0.05_dl !pivot scales in Mpc^{-1}
         real(dl) :: pivot_tensor = 0.05_dl
         real(dl) :: As = 1._dl
-        real(dl) :: new_par = 0.1_dl
+        real(dl) :: ampt = 0._dl
+        real(dl) :: phaset = 0._dl
+        real(dl) :: freq = 0._dl
         real(dl) :: At = 1._dl !A_T at k_0_tensor if tensor_parameterization==tensor_param_AT
         
         real(dl), private :: curv = 0._dl !curvature parameter
@@ -140,8 +142,8 @@
 
 
     lnrat = log(k/this%pivot_scalar)
-    TInitialPowerLaw_ScalarPower =(this%As * exp(lnrat * (this%ns - 1 + &
-        &             lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat)))) * (1+ this%new_par* Cos(k/this%pivot_scalar))
+    TInitialPowerLaw_ScalarPower =(this%As * exp(lnrat * (this%ns - 1 + lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat)))) * (1+ this%new_par* Cos(k/this%pivot_scalar))
+    TInitialPowerLaw_ScalarPower= TInitialPowerLaw_ScalarPower( 1 + this%ampt*Cos(this%freqt +this%phaset))
 
     end function TInitialPowerLaw_ScalarPower
 
@@ -212,6 +214,9 @@
     this%ns = Ini%Read_Double(CompatKey(Ini,'scalar_spectral_index'))
     
     call Ini%Read(CompatKey(Ini,'scalar_nrun'), this%nrun)
+    call Ini%Read(CompatKey(Ini,'ampt'), this%ampt)
+    call Ini%Read(CompatKey(Ini,'freqt'), this%freqt)
+    call Ini%Read(CompatKey(Ini,'phaset'), this%phaset)
     call Ini%Read(CompatKey(Ini,'scalar_nrunrun'), this%nrunrun)
 
     if (WantTensors) then
