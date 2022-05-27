@@ -192,12 +192,12 @@
     use IniObjects
     class(TInitialPowerLaw) :: this
     class(TIniFile), intent(in) :: Ini
-    call Ini%Read('new_par', this%new_par)
+    
     logical :: WantTensors
     
 
     WantTensors = Ini%Read_Logical('get_tensor_cls', .false.)
-
+    
     call Ini%Read('pivot_scalar', this%pivot_scalar)
     call Ini%Read('pivot_tensor', this%pivot_tensor)
     if (Ini%Read_Int('initial_power_num', 1) /= 1) call MpiStop('initial_power_num>1 no longer supported')
@@ -209,6 +209,7 @@
     end if
     this%r = 1
     this%ns = Ini%Read_Double(CompatKey(Ini,'scalar_spectral_index'))
+    this%new_par =Ini%Read_Double(CompatKey(Ini,'scalar_new_par'))
     call Ini%Read(CompatKey(Ini,'scalar_nrun'), this%nrun)
     call Ini%Read(CompatKey(Ini,'scalar_nrunrun'), this%nrunrun)
 
