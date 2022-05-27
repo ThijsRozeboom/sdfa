@@ -122,7 +122,7 @@ class InitialPowerLaw(InitialPower):
     def __init__(self, **kwargs):
         self.set_params(**kwargs)
 
-    def set_params(self, As=2e-9, ns=0.96, nrun=0, nrunrun=0.0, r=0.0, nt=None, ntrun=0.0,new_par = 0.1, 
+    def set_params(self, As=2e-9, ns=0.96, nrun=0, nrunrun=0.0, r=0.0, nt=None, ntrun=0.0, 
                    pivot_scalar=0.05, pivot_tensor=0.05, parameterization="tensor_param_rpivot"):
         r"""
         Set parameters using standard power law parameterization. If nt=None, uses inflation consistency relation.
@@ -148,7 +148,7 @@ class InitialPowerLaw(InitialPower):
             raise CAMBError('Initial power parameterization not supported here')
         self.tensor_parameterization = parameterization
         self.As = As
-        self.new_par = new_par
+        
         self.ns = ns
         self.nrun = nrun
         self.nrunrun = nrunrun
