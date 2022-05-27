@@ -142,7 +142,7 @@
 
 
     lnrat = log(k/this%pivot_scalar)
-    TInitialPowerLaw_ScalarPower =(this%As * exp(lnrat * (this%ns - 1 + lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat)))) * (1+ this%new_par* Cos(k/this%pivot_scalar))
+    TInitialPowerLaw_ScalarPower =(this%As * exp(lnrat * (this%ns - 1 + lnrat * (this%nrun / 2 + this%nrunrun / 6 * lnrat)))) 
     TInitialPowerLaw_ScalarPower= TInitialPowerLaw_ScalarPower( 1 + this%ampt*Cos(this%freqt +this%phaset))
 
     end function TInitialPowerLaw_ScalarPower
@@ -202,7 +202,7 @@
     
     call Ini%Read('pivot_scalar', this%pivot_scalar)
     call Ini%Read('pivot_tensor', this%pivot_tensor)
-    call Ini%Read('new_par', this%new_par)
+    
     if (Ini%Read_Int('initial_power_num', 1) /= 1) call MpiStop('initial_power_num>1 no longer supported')
     if (WantTensors) then
         this%tensor_parameterization =  Ini%Read_Int('tensor_parameterization', tensor_param_indeptilt)
