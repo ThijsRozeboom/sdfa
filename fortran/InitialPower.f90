@@ -192,7 +192,9 @@
     use IniObjects
     class(TInitialPowerLaw) :: this
     class(TIniFile), intent(in) :: Ini
+    call Ini%Read('new_par', this%new_par)
     logical :: WantTensors
+    
 
     WantTensors = Ini%Read_Logical('get_tensor_cls', .false.)
 
